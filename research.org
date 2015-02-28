@@ -1,0 +1,309 @@
+* Books
+** Neural Network Architectures - Judith Dayhoff
+   [[http://books.google.com/books/about/Neural_network_architectures.html?id=9RwnAAAAMAAJ][Google Books]]
+
+*** Thoughts
+
+    Neural networks are not unlike self-organizing agent systems. Each node can be considered as an agent that is very simply programmed (responds to stimulus from the environment by receiving activations from incoming connections and using its assigned function to send an output to other agents) and collectively they are performing a desired global task. They are self-organizing in that they learn to communicate the appropriate values between one another that results in the system being able to perform well. None of the agents have knowledge of the global task or the state of the rest of the network, all communication is local (with perhaps some further reaching connections being permitted, e.g. long range feedback or the concatenation approach to handling autoencoders.
+
+*** Quotes
+12: 
+#+BEGIN_QUOTE
+   "Neural network architectures encode information in a distributed fashion. Typically the information that is stored in a neural net is shared by many of its processing units. This type of coding is in stark contrast to traditional memory schemes, where particular pieces of information are stored in particular locations of memory. Traditional speech recognition systems, for example, contain a lookup table of template speech patterns (individual syllables or words) that are compared one by one to spoken inputs. Such templates are stored in a specific location of the computer memory. Neural networks, in contrast, identify spoken syllables by using a number of processing units simultaneously. The internal representation is thus distributed across all or part of the network. Furthermore, more than one syllable or pattern may be stored at the same time by the same network.
+
+    Distributed storage schemes provide many advantages, the most important being that the information representation can be redundant. Thus a neural network system can undergo partial destruction of the network and may still be able to function correctly. Although redundancy can be buit into other types of systems, the neural network has a natural way to organize and implement this redundancy; the result is a naturally fault- or err-tolerant system."
+#+END_QUOTE
+
+39:
+#+BEGIN_QUOTE
+"Mathematical analysis has shown that when this equality is true (bi-directional weights equal), the network is able to converge - that is, it eventually attains a stable state. Convergence of the network is necessary in order for it to perform useful computational tasks such as optimizatino and associative memory. Many networks with unqual weights (w_ij != w_ji) also converge successfully.
+#+END_QUOTE
+
+42:
+#+BEGIN_QUOTE
+"The randomized updates used in the Hopfield network provide an important difference between it and other paradigms. Most other neural network paradigms have a layer of processing units updated at the same time (or nearly the same time). In contrast, the asynchronous updating of the Hopfield Net is a closer match to biological reality - biological neurons update their own states due to events that impinge upon the neuron. These impinging events are not synchronized from neuron to neuron."
+#+END_QUOTE
+
+56:
+#+BEGIN_QUOTE
+"The nonsynchronous updating of processing units in the Hopfield network is a unique property, and is especially relevant to the study of biological systems becuase of their asynchronous updating of nerve cell attributes. In addition, asynchronous updating can be helpful in designing fast hardware implementations.
+
+The most general advantage of the Hopfield network is its inherently parallel architecture. As a result, potential hardware implementations may be very fast. Tradeoffs must be assessed, however, between the size and speed of the network and the size of the applications problems."
+#+END_QUOTE
+
+*** Architecture Types
+  + Perceptron
+    - 0 or 1 thresholded output
+    - Real-valued weights.
+    - Only one *trainable* layer of weights. Possible to have multiple layers, but additional layers beyond the one trainable layer will be fixed weights.
+    - A weight only changes if its corresponding training input is non-zero and there is a difference between target and output values.
+  + Adaline/Madaline (_Ada_ptive _Li_near _Ne_uron)
+    - Adaline has (+/-)1 thresholded output.
+    - Real-valued weights.
+    - Madaline is a system of connected adalines: layer of adalines, each adaline connected to an output unit.
+    - Majority vote of adalines determines output of madeline: more than half of adalines have +1(or -1), so does the madaline.
+    - Weight update: adaline unit whose sum was closest to 0 in the wrong direction is updated. "the adaptiation rule assigns responsibility to the unit that can most easily assume it. Only one adaline unit updates its weights; the others keep their weights the same"
+  + Hopfield Network
+    - Fully interconnected network of units (complete digraph)
+    - Each unit binary 0 or 1 (alternatively -1 or 1)
+    - Network state represented by bit vector
+    - With weights w_ij = w_ji, network converges to a stable state (all units left unchanged after update), *necessary to perform useful computational tasks*
+    - Update one unit at a time, continue until no more changes are possible
+    - Can update units in sequence; Hopfield chose at random to ensure same average update rate
+    - [[http://cns.upf.edu/jclub/hopfield82.pdf][Hopfield (1982)]] proves network will reach a stable state.
+    - Cannot reach global minimum of "Energy" function from local minimum (Boltzmann machine overcomes this with noise to shake it out)
+    - [[http://www.pnas.org/content/81/10/3088.full.pdf][Hopfield (1984)]] extended the network to have continuous unit values (using nonlinear sigmoid function)
+    - Traveling Salesman: can represent tours as NxN matrix with one 1 in each column and row, corresponding to one city at a time being visited only once. Energy function has multiple terms, each term imposing a constraint of the problem. Hopfield had success with <30 cities but it was shown later that the approach does not scale to larger problem spaces.
+
+* Papers
+** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
+   CLOSED: [2015-02-27 Fri 21:38]
+   [[http://www.snl.salk.edu/~navlakha/pubs/pkdd2015.pdf][Paper PDF]]
+   [[http://link.springer.com/article/10.1007/s10618-014-0399-1][Citation]]
+   
+   "biological networks are shaped by their environments"
+
+   "For both social and biological networks, node loss occurs alongside an underlying growth process."
+
+** TODO Make It or Break It: Manipulating Robustness in Large Networks - Chan 2014
+   [[http://www3.cs.stonybrook.edu/~leman/pubs/14-sdm-miobi.pdf][Paper PDF]]
+   [[http://epubs.siam.org/doi/abs/10.1137/1.9781611973440.37][Citation]]
+
+* Tutorials
+** [[http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial][UFLDL Tutorial]]
+*** DONE Exercise: Sparse Autoencoder
+   CLOSED: [2015-02-11 Wed 17:47]
+*** DONE Exercise: Vectorization
+   CLOSED: [2015-02-11 Wed 17:47]
+*** DONE Exercise: PCA and Whitening
+   CLOSED: [2015-02-11 Wed 17:47]
+*** DONE Exercise: Softmax Regression
+   CLOSED: [2015-02-11 Wed 17:47]
+*** DONE Exercise: Implement deep networks for digit classification
+    CLOSED: [2015-02-22 Sun 11:22]
+*** DONE debug stackedAE, getting ZERO gradients
+    CLOSED: [2015-02-16 Mon 18:06]
+*** TODO rerun entire exercise starting at train second sparse AE
+*** TODO Exercise: Learning color features with Sparse Autoencoders
+*** TODO Exercise: Convolution and Pooling
+** [[http://deeplearning.net/software/theano/tutorial/][Theano Tutorial]]
+*** DONE Python tutorial
+    CLOSED: [2015-02-22 Sun 11:56]
+*** DONE NumPy refresher
+    CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Matrix conventions for machine learning
+     CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Broadcasting
+     CLOSED: [2015-02-22 Sun 11:56]
+*** DONE Baby Steps - Algebra
+    CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Adding two Scalars
+     CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Adding two Matrices
+     CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Exercise
+     CLOSED: [2015-02-22 Sun 11:56]
+*** DONE More Examples
+    CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Logistic Function
+     CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Computing More than one Thing at the Same Time
+     CLOSED: [2015-02-22 Sun 11:56]
+**** DONE Setting a Default Value for an Argument
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Using Shared Variables
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Using Random Numbers
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Brief Example
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Seeding Streams
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Sharing Streams Between Functions
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Copying Random State Between Theano Graphs
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Other Random Distributions
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE Other Implementations
+     CLOSED: [2015-02-22 Sun 11:57]
+**** DONE A Real Example: Logistic Regression
+     CLOSED: [2015-02-22 Sun 11:57]
+*** DONE Graph Structures
+    CLOSED: [2015-02-24 Tue 17:35]
+**** DONE Theano Graphs
+     CLOSED: [2015-02-24 Tue 17:35]
+**** DONE Automatic Differentiation
+     CLOSED: [2015-02-24 Tue 17:35]
+**** DONE Optimizations
+     CLOSED: [2015-02-24 Tue 17:35]
+*** DONE Printing/Drawing Theano graphs
+    CLOSED: [2015-02-24 Tue 17:39]
+**** DONE Pretty Printing
+     CLOSED: [2015-02-24 Tue 17:39]
+**** DONE Debug Printing
+     CLOSED: [2015-02-24 Tue 17:39]
+**** DONE Picture Printing
+     CLOSED: [2015-02-24 Tue 17:39]
+*** DONE Derivatives in Theano
+    CLOSED: [2015-02-24 Tue 19:16]
+**** DONE Computing Gradients
+     CLOSED: [2015-02-24 Tue 19:00]
+**** DONE Computing the Jacobian
+     CLOSED: [2015-02-24 Tue 19:00]
+**** DONE Computing the Hessian
+     CLOSED: [2015-02-24 Tue 19:00]
+**** DONE Jacobian times a Vector
+     CLOSED: [2015-02-24 Tue 19:00]
+***** DONE R-operator
+      CLOSED: [2015-02-24 Tue 19:12]
+***** DONE L-operator
+      CLOSED: [2015-02-24 Tue 19:12]
+**** DONE Hessian times a Vector
+     CLOSED: [2015-02-24 Tue 19:16]
+**** DONE Final Pointers
+     CLOSED: [2015-02-24 Tue 19:16]
+*** TODO Configuration Settings and Compiling Modes
+**** TODO Configuration
+**** TODO Exercise
+**** TODO Mode
+**** TODO Linkers
+**** TODO Using DebugMode
+**** TODO ProfileMode
+***** TODO Creating a ProfileMode Instance
+***** TODO Compiling your Graph with ProfileMode
+***** TODO Retrieving Timing Information
+*** TODO Loading and Saving
+**** TODO The Basics of Pickling
+**** TODO Short-Term Serialization
+**** TODO Long-Term Serialization
+*** TODO Conditions
+**** TODO IfElse vs Switch
+*** TODO Loop
+**** TODO Scan
+**** TODO Exercise
+*** TODO Sparse
+**** TODO Compressed Sparse Format
+***** TODO Which format should I use?
+**** TODO Handling Sparse in Theano
+***** TODO To and Fro
+***** TODO Properties and Construction
+***** TODO Structured Operation
+***** TODO Gradient
+*** TODO Using the GPU
+**** TODO CUDA backend
+***** TODO Testing Theano with GPU
+***** TODO Returning a Handle to Device-Allocated Data
+***** TODO What Can Be Accelerated on the GPU
+***** TODO Tips for Improving Performance on GPU
+***** TODO GPU Async capabilities
+***** TODO Changing the Value of Shared Variables
+****** TODO Exercise
+**** TODO GpuArray Backend
+***** TODO Testing Theano with GPU
+***** TODO Returning a Handle to Device-Allocated Data
+***** TODO What Can be Accelerated on the GPU
+***** TODO GPU Async Capabilities
+**** TODO Software for Directly Programming a GPU
+**** TODO Learning to Program with PyCUDA
+***** TODO Exercise
+***** TODO Exercise
+*** TODO PyCUDA/CUDAMat/Gnumpy compatibility
+**** TODO PyCUDA
+***** TODO Transfer
+***** TODO Compiling with PyCUDA
+***** TODO Theano Op using a PyCUDA function
+**** TODO CUDAMat
+**** TODO Gnumpy
+*** TODO Understanding Memory Aliasing for Speed and Correctness
+**** TODO The Memory Model: Two Spaces
+**** TODO Borrowing when Creating Shared Variables
+**** TODO Borrowing when Accessing Value of Shared Variables
+***** TODO Retrieving
+***** TODO Assigning
+**** TODO Borrowing when Constructing Function Objects
+*** TODO How Shape Information is Handled by Theano
+**** TODO Shape Inference Problem
+**** TODO Specifing Exact Shape
+**** TODO Future Plans
+*** TODO Debugging Theano: FAQ and Troubleshooting
+**** TODO Isolating the Problem/Testing Theano Compiler
+**** TODO Interpreting Error Messages
+**** TODO Using Test Values
+**** TODO “How do I Print an Intermediate Value in a Function/Method?”
+**** TODO “How do I Print a Graph?” (before or after compilation)
+**** TODO “The Function I Compiled is Too Slow, what’s up?”
+**** TODO “How do I Step through a Compiled Function?”
+**** TODO How to Use pdb
+**** TODO Dumping a Function to help debug
+*** TODO Profiling Theano function
+*** TODO Extending Theano
+**** TODO Theano Graphs
+**** TODO Op Structure
+**** TODO Op Example
+**** TODO How To Test it
+***** TODO Basic Tests
+***** TODO Testing the infer_shape
+***** TODO Testing the gradient
+***** TODO Testing the Rop
+***** TODO Testing GPU Ops
+**** TODO Running Your Tests
+***** TODO theano-nose
+***** TODO nosetests
+***** TODO In-file
+**** TODO Exercise
+**** TODO as_op
+***** TODO as_op Example
+***** TODO Exercise
+**** TODO Random numbers in tests
+**** TODO Documentation
+**** TODO Final Note
+*** TODO Extending Theano with a C Op
+**** TODO Python C-API
+***** TODO Reference counting
+**** TODO NumPy C-API
+***** TODO NumPy data types
+***** TODO NumPy ndarrays
+***** TODO Accessing NumPy ndarrays’ data and properties
+***** TODO Creating NumPy ndarrays
+**** TODO Methods the C Op needs to define
+**** TODO Simple C Op example
+**** TODO More complex C Op example
+**** TODO Alternate way of defining C Ops
+***** TODO Main function
+***** TODO Macros
+***** TODO Support code
+**** TODO Final Note
+*** TODO Python Memory Management
+**** TODO Basic Objects
+**** TODO Internal Memory Management
+**** TODO Pickle
+*** TODO Multi cores support in Theano
+**** TODO BLAS operation
+**** TODO Parallel element wise ops with OpenMP
+* Videos
+*** Theano
+**** DONE [[https://www.youtube.com/watch?v=S75EdAcXHKk][Introduction to Deep Learning with Python]]
+     CLOSED: [2015-02-28 Sat 13:08]
+**** TODO Autoencoders in Theano
+***** TODO [[https://www.youtube.com/watch?v=Bygc0hX2t7M&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7][Reading Olhausen Natural Images]]
+***** TODO [[https://www.youtube.com/watch?v=VZ9PwvgTXWY&index=2&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7][Generating Patches]]
+***** TODO [[https://www.youtube.com/watch?v=FvCeOqpd4W8&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=3][Preprocessing the Data]]
+***** TODO [[https://www.youtube.com/watch?v=0OA5tp1yG6Q&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=4][Defining the Model in Theano]]
+***** TODO [[https://www.youtube.com/watch?v=9YslqIFheBU&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=5][The Costs and the Training Function]]
+***** TODO [[https://www.youtube.com/watch?v=ecPwvkNtgY0&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=6][Errata]]
+***** TODO [[https://www.youtube.com/watch?v=dZxvGGj65cc&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=7][The Main Loop and Visualization]]
+** TODO [[https://www.youtube.com/watch?v=W15K9PegQt0][Andres Ng: Machine Learning via Larg-scale Brain Simulations]]
+** TODO [[https://www.youtube.com/user/aicourses/playlists?view=50&sort=dd&shelf_id=2][Neural Networks for ML]]
+*** TODO [[https://www.youtube.com/playlist?list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2][06 Optimization]]
+**** TODO [[https://www.youtube.com/watch?v=GvHmwBc9N30&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=1][Overview of Mini Batch Gradient Descent]]
+**** TODO [[https://www.youtube.com/watch?v=-5Wa4O8r-xM&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=2][A Bag of Tricks for Mini Batch Gradient Descent]]
+**** TODO [[https://www.youtube.com/watch?v=8yg2mRJx-z4&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=3][The Momentum Method]]
+**** TODO [[https://www.youtube.com/watch?v=u8dHl8De-cc&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=4][Adaptive Learning Rates for Each Connection]]
+**** TODO [[https://www.youtube.com/watch?v=LGA-gRkLEsI&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=5][Rmsprop Divide the Gradient by a Running Average of it Recent Magnitude]]
+*** TODO [[https://www.youtube.com/playlist?list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx][07 Recurrent Neural Networks]]
+**** TODO [[https://www.youtube.com/watch?v=lKDfBZz7Wy8&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=1][Modeling Sequences a Brief Overview]] 
+**** TODO [[https://www.youtube.com/watch?v=gPdbTIEMQwY&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=2][Training RNNs with Back Propagation]]
+**** TODO [[https://www.youtube.com/watch?v=z61VFeALk3o&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=3][A Toy Example of Training an RNN]]
+**** TODO [[https://www.youtube.com/watch?v=Pp4oKq4kCYs&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=4][Why it is Difficult to Train an RNN]] 
+**** TODO [[https://www.youtube.com/watch?v=lsV5rFbs-K0&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=5][Long Term Short Term Memory]]
