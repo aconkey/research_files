@@ -17,7 +17,6 @@
 <ul>
 <li><a href="#sec-2-1">2.1. <span class="done DONE">DONE</span> MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015</a></li>
 <li><a href="#sec-2-2">2.2. <span class="todo TODO">TODO</span> Make It or Break It: Manipulating Robustness in Large Networks - Chan 2014</a></li>
-<li><a href="#sec-2-3">2.3. <span class="todo TODO">TODO</span> Computer systems are dynamical systems - Mytkowicz 2008</a></li>
 </ul>
 </li>
 <li><a href="#sec-3">3. Tutorials</a>
@@ -73,7 +72,7 @@
 <li><a href="#sec-4-1">4.1. <span class="todo TODO">TODO</span> Andres Ng: Machine Learning via Larg-scale Brain Simulations</a></li>
 <li><a href="#sec-4-2">4.2. <span class="todo TODO">TODO</span> Neural Networks for ML</a>
 <ul>
-<li><a href="#sec-4-2-1">4.2.1. <span class="todo TODO">TODO</span> 06 Optimization</a></li>
+<li><a href="#sec-4-2-1">4.2.1. <span class="done DONE">DONE</span> 06 Optimization</a></li>
 <li><a href="#sec-4-2-2">4.2.2. <span class="todo TODO">TODO</span> 07 Recurrent Neural Networks</a></li>
 </ul>
 </li>
@@ -139,6 +138,23 @@ Neural networks are not unlike self-organizing agent systems. Each node can be c
     -   Cannot reach global minimum of "Energy" function from local minimum (Boltzmann machine overcomes this with noise to shake it out)
     -   [Hopfield (1984)](http://www.pnas.org/content/81/10/3088.full.pdf) extended the network to have continuous unit values (using nonlinear sigmoid function)
     -   Traveling Salesman: can represent tours as NxN matrix with one 1 in each column and row, corresponding to one city at a time being visited only once. Energy function has multiple terms, each term imposing a constraint of the problem. Hopfield had success with <30 cities but it was shown later that the approach does not scale to larger problem spaces.
+-   Back-propagation
+    -   Input layer, output layer, one or more hidden layers.
+    -   A layer is often fully interconnected to the next layer in the stack, but not necessarily
+    -   No a priori knowledge of a mathematical function mapping input patterns to output patterns is needed; self-organization of the weights finds the mapping
+    -   Nonlinear activation function for hidden layer provides "soft" threshold
+    -   Standard sigmoid has "interesting" values for range [-3,3], i.e. values increase monotonically from 0 to 1 with a sharp increase around x=0; asymptotically goes to 0 for x < -3 and to 1 for x > 3
+    -   Sigmoid can be shifted left/right by adding/subtracting constant value - this is what the bias nodes do
+    -   In the error deltas for the output units &delta;<sub>j</sub> = (t<sub>j</sub> - a<sub>j</sub>)f<sup>&prime;</sup>(S<sub>j</sub>), the f<sup>&prime;</sup> forces a stronger correction when S<sub>j</sub> is near the rapid rise of the sigmoid (sigmoid derivative is a bell-shaped curve centered at 0)
+    -   In weight update &Delta; w<sub>ji</sub> = &eta; &delta;<sub>j</sub> a<sub>i</sub>, larger error &delta;<sub>j</sub> results in larger adjustments to incoming weights, larger activation a<sub>i</sub> of originating unit from lower layer results in larger weight adjustment.
+    -   Learning rate &eta; (usually in range [0.25, 0.75] can cause network instability if too large, and very slow training if too small.
+    -   A RMSE value < 0.1 indicates the training set is learned
+    -   Techniques for avoiding local minima and speeding up convergence:
+        -   change the learning rate
+        -   simulated annealing: start with large learning rate and attenuate its value as training proceeds
+        -   change number of hidden nodes
+        -   add noise to weights
+        -   momentum
 
 # Papers<a id="sec-2" name="sec-2"></a>
 
@@ -155,11 +171,6 @@ Neural networks are not unlike self-organizing agent systems. Each node can be c
 
 [Paper PDF](http://www3.cs.stonybrook.edu/~leman/pubs/14-sdm-miobi.pdf)
 [Citation](http://epubs.siam.org/doi/abs/10.1137/1.9781611973440.37)
-
-## TODO Computer systems are dynamical systems - Mytkowicz 2008<a id="sec-2-3" name="sec-2-3"></a>
-
-[Paper PDF](http://www-plan.cs.colorado.edu/klipto/CHAOEH193033124_2.pdf)
-[Citation](http://scitation.aip.org/content/aip/journal/chaos/19/3/10.1063/1.3187791)
 
 # Tutorials<a id="sec-3" name="sec-3"></a>
 
@@ -510,37 +521,22 @@ Neural networks are not unlike self-organizing agent systems. Each node can be c
 
 1.  DONE [Introduction to Deep Learning with Python](https://www.youtube.com/watch?v=S75EdAcXHKk)
 
-2.  TODO Autoencoders in Theano
-
-    1.  TODO [Reading Olhausen Natural Images](https://www.youtube.com/watch?v=Bygc0hX2t7M&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7)
-    
-    2.  TODO [Generating Patches](https://www.youtube.com/watch?v=VZ9PwvgTXWY&index=2&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7)
-    
-    3.  TODO [Preprocessing the Data](https://www.youtube.com/watch?v=FvCeOqpd4W8&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=3)
-    
-    4.  TODO [Defining the Model in Theano](https://www.youtube.com/watch?v=0OA5tp1yG6Q&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=4)
-    
-    5.  TODO [The Costs and the Training Function](https://www.youtube.com/watch?v=9YslqIFheBU&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=5)
-    
-    6.  TODO [Errata](https://www.youtube.com/watch?v=ecPwvkNtgY0&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=6)
-    
-    7.  TODO [The Main Loop and Visualization](https://www.youtube.com/watch?v=dZxvGGj65cc&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=7)
-
 ## TODO [Andres Ng: Machine Learning via Larg-scale Brain Simulations](https://www.youtube.com/watch?v=W15K9PegQt0)<a id="sec-4-1" name="sec-4-1"></a>
 
 ## TODO [Neural Networks for ML](https://www.youtube.com/user/aicourses/playlists?view=50&sort=dd&shelf_id=2)<a id="sec-4-2" name="sec-4-2"></a>
 
-### TODO [06 Optimization](https://www.youtube.com/playlist?list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2)<a id="sec-4-2-1" name="sec-4-2-1"></a>
+### DONE [06 Optimization](https://www.youtube.com/playlist?list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2)<a id="sec-4-2-1" name="sec-4-2-1"></a>
 
-1.  TODO [Overview of Mini Batch Gradient Descent](https://www.youtube.com/watch?v=GvHmwBc9N30&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=1)
 
-2.  TODO [A Bag of Tricks for Mini Batch Gradient Descent](https://www.youtube.com/watch?v=-5Wa4O8r-xM&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=2)
+1.  DONE [Overview of Mini Batch Gradient Descent](https://www.youtube.com/watch?v=GvHmwBc9N30&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=1)
 
-3.  TODO [The Momentum Method](https://www.youtube.com/watch?v=8yg2mRJx-z4&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=3)
+2.  DONE [A Bag of Tricks for Mini Batch Gradient Descent](https://www.youtube.com/watch?v=-5Wa4O8r-xM&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=2)
 
-4.  TODO [Adaptive Learning Rates for Each Connection](https://www.youtube.com/watch?v=u8dHl8De-cc&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=4)
+3.  DONE [The Momentum Method](https://www.youtube.com/watch?v=8yg2mRJx-z4&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=3)
 
-5.  TODO [Rmsprop Divide the Gradient by a Running Average of it Recent Magnitude](https://www.youtube.com/watch?v=LGA-gRkLEsI&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=5)
+4.  DONE [Adaptive Learning Rates for Each Connection](https://www.youtube.com/watch?v=u8dHl8De-cc&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=4)
+
+5.  DONE [Rmsprop Divide the Gradient by a Running Average of it Recent Magnitude](https://www.youtube.com/watch?v=LGA-gRkLEsI&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=5)
 
 ### TODO [07 Recurrent Neural Networks](https://www.youtube.com/playlist?list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx)<a id="sec-4-2-2" name="sec-4-2-2"></a>
 

@@ -54,6 +54,23 @@ The most general advantage of the Hopfield network is its inherently parallel ar
     - Cannot reach global minimum of "Energy" function from local minimum (Boltzmann machine overcomes this with noise to shake it out)
     - [[http://www.pnas.org/content/81/10/3088.full.pdf][Hopfield (1984)]] extended the network to have continuous unit values (using nonlinear sigmoid function)
     - Traveling Salesman: can represent tours as NxN matrix with one 1 in each column and row, corresponding to one city at a time being visited only once. Energy function has multiple terms, each term imposing a constraint of the problem. Hopfield had success with <30 cities but it was shown later that the approach does not scale to larger problem spaces.
+  + Back-propagation
+    - Input layer, output layer, one or more hidden layers. 
+    - A layer is often fully interconnected to the next layer in the stack, but not necessarily
+    - No a priori knowledge of a mathematical function mapping input patterns to output patterns is needed; self-organization of the weights finds the mapping
+    - Nonlinear activation function for hidden layer provides "soft" threshold
+    - Standard sigmoid has "interesting" values for range [-3,3], i.e. values increase monotonically from 0 to 1 with a sharp increase around x=0; asymptotically goes to 0 for x < -3 and to 1 for x > 3
+    - Sigmoid can be shifted left/right by adding/subtracting constant value - this is what the bias nodes do
+    - In the error deltas for the output units \delta_j = (t_j - a_j)f^\prime(S_j), the f^\prime forces a stronger correction when S_j is near the rapid rise of the sigmoid (sigmoid derivative is a bell-shaped curve centered at 0)
+    - In weight update \Delta w_{ji} = \eta \delta_j a_i, larger error \delta_j results in larger adjustments to incoming weights, larger activation a_i of originating unit from lower layer results in larger weight adjustment.
+    - Learning rate \eta (usually in range [0.25, 0.75] can cause network instability if too large, and very slow training if too small.
+    - A RMSE value < 0.1 indicates the training set is learned
+    - Techniques for avoiding local minima and speeding up convergence:
+      * change the learning rate
+      * simulated annealing: start with large learning rate and attenuate its value as training proceeds
+      * change number of hidden nodes 
+      * add noise to weights
+      * momentum 
 
 * Papers
 ** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
@@ -285,22 +302,20 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 *** Theano
 **** DONE [[https://www.youtube.com/watch?v=S75EdAcXHKk][Introduction to Deep Learning with Python]]
      CLOSED: [2015-02-28 Sat 13:08]
-**** TODO Autoencoders in Theano
-***** TODO [[https://www.youtube.com/watch?v=Bygc0hX2t7M&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7][Reading Olhausen Natural Images]]
-***** TODO [[https://www.youtube.com/watch?v=VZ9PwvgTXWY&index=2&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7][Generating Patches]]
-***** TODO [[https://www.youtube.com/watch?v=FvCeOqpd4W8&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=3][Preprocessing the Data]]
-***** TODO [[https://www.youtube.com/watch?v=0OA5tp1yG6Q&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=4][Defining the Model in Theano]]
-***** TODO [[https://www.youtube.com/watch?v=9YslqIFheBU&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=5][The Costs and the Training Function]]
-***** TODO [[https://www.youtube.com/watch?v=ecPwvkNtgY0&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=6][Errata]]
-***** TODO [[https://www.youtube.com/watch?v=dZxvGGj65cc&list=PLDUHaKzf8LMZRnpsvhaa6MT46XZCUmbH7&index=7][The Main Loop and Visualization]]
 ** TODO [[https://www.youtube.com/watch?v=W15K9PegQt0][Andres Ng: Machine Learning via Larg-scale Brain Simulations]]
 ** TODO [[https://www.youtube.com/user/aicourses/playlists?view=50&sort=dd&shelf_id=2][Neural Networks for ML]]
-*** TODO [[https://www.youtube.com/playlist?list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2][06 Optimization]]
-**** TODO [[https://www.youtube.com/watch?v=GvHmwBc9N30&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=1][Overview of Mini Batch Gradient Descent]]
-**** TODO [[https://www.youtube.com/watch?v=-5Wa4O8r-xM&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=2][A Bag of Tricks for Mini Batch Gradient Descent]]
-**** TODO [[https://www.youtube.com/watch?v=8yg2mRJx-z4&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=3][The Momentum Method]]
-**** TODO [[https://www.youtube.com/watch?v=u8dHl8De-cc&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=4][Adaptive Learning Rates for Each Connection]]
-**** TODO [[https://www.youtube.com/watch?v=LGA-gRkLEsI&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=5][Rmsprop Divide the Gradient by a Running Average of it Recent Magnitude]]
+*** DONE [[https://www.youtube.com/playlist?list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2][06 Optimization]]
+    CLOSED: [2015-02-28 Sat 17:20]
+**** DONE [[https://www.youtube.com/watch?v=GvHmwBc9N30&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=1][Overview of Mini Batch Gradient Descent]]
+     CLOSED: [2015-02-28 Sat 16:18]
+**** DONE [[https://www.youtube.com/watch?v=-5Wa4O8r-xM&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=2][A Bag of Tricks for Mini Batch Gradient Descent]]
+     CLOSED: [2015-02-28 Sat 16:18]
+**** DONE [[https://www.youtube.com/watch?v=8yg2mRJx-z4&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=3][The Momentum Method]]
+     CLOSED: [2015-02-28 Sat 16:26]
+**** DONE [[https://www.youtube.com/watch?v=u8dHl8De-cc&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=4][Adaptive Learning Rates for Each Connection]]
+     CLOSED: [2015-02-28 Sat 17:19]
+**** DONE [[https://www.youtube.com/watch?v=LGA-gRkLEsI&list=PLnnr1O8OWc6bAAkp43m0jNF_DEqwWp2o2&index=5][Rmsprop Divide the Gradient by a Running Average of it Recent Magnitude]]
+     CLOSED: [2015-02-28 Sat 17:20]
 *** TODO [[https://www.youtube.com/playlist?list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx][07 Recurrent Neural Networks]]
 **** TODO [[https://www.youtube.com/watch?v=lKDfBZz7Wy8&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=1][Modeling Sequences a Brief Overview]] 
 **** TODO [[https://www.youtube.com/watch?v=gPdbTIEMQwY&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=2][Training RNNs with Back Propagation]]
