@@ -1,32 +1,25 @@
 * Books
 ** Neural Network Architectures - Judith Dayhoff
    [[http://books.google.com/books/about/Neural_network_architectures.html?id=9RwnAAAAMAAJ][Google Books]]
-
-*** Thoughts
-
-    Neural networks are not unlike self-organizing agent systems. Each node can be considered as an agent that is very simply programmed (responds to stimulus from the environment by receiving activations from incoming connections and using its assigned function to send an output to other agents) and collectively they are performing a desired global task. They are self-organizing in that they learn to communicate the appropriate values between one another that results in the system being able to perform well. None of the agents have knowledge of the global task or the state of the rest of the network, all communication is local (with perhaps some further reaching connections being permitted, e.g. long range feedback or the concatenation approach to handling autoencoders.
-
-*** Quotes
-12: 
+ 
 #+BEGIN_QUOTE
-   "Neural network architectures encode information in a distributed fashion. Typically the information that is stored in a neural net is shared by many of its processing units. This type of coding is in stark contrast to traditional memory schemes, where particular pieces of information are stored in particular locations of memory. Traditional speech recognition systems, for example, contain a lookup table of template speech patterns (individual syllables or words) that are compared one by one to spoken inputs. Such templates are stored in a specific location of the computer memory. Neural networks, in contrast, identify spoken syllables by using a number of processing units simultaneously. The internal representation is thus distributed across all or part of the network. Furthermore, more than one syllable or pattern may be stored at the same time by the same network.
+(p12) "Neural network architectures encode information in a distributed fashion. Typically the information that is stored in a neural net is shared by many of its processing units. This type of coding is in stark contrast to traditional memory schemes, where particular pieces of information are stored in particular locations of memory. Traditional speech recognition systems, for example, contain a lookup table of template speech patterns (individual syllables or words) that are compared one by one to spoken inputs. Such templates are stored in a specific location of the computer memory. Neural networks, in contrast, identify spoken syllables by using a number of processing units simultaneously. The internal representation is thus distributed across all or part of the network. Furthermore, more than one syllable or pattern may be stored at the same time by the same network.
 
     Distributed storage schemes provide many advantages, the most important being that the information representation can be redundant. Thus a neural network system can undergo partial destruction of the network and may still be able to function correctly. Although redundancy can be buit into other types of systems, the neural network has a natural way to organize and implement this redundancy; the result is a naturally fault- or err-tolerant system."
 #+END_QUOTE
 
-39:
+    Neural networks are not unlike self-organizing agent systems. Each node can be considered as an agent that is very simply programmed (responds to stimulus from the environment by receiving activations from incoming connections and using its assigned function to send an output to other agents) and collectively they are performing a desired global task. They are self-organizing in that they learn to communicate the appropriate values between one another that results in the system being able to perform well. None of the agents have knowledge of the global task or the state of the rest of the network, all communication is local (with perhaps some further reaching connections being permitted, e.g. long range feedback or the concatenation approach to handling autoencoders.
+
 #+BEGIN_QUOTE
-"Mathematical analysis has shown that when this equality is true (bi-directional weights equal), the network is able to converge - that is, it eventually attains a stable state. Convergence of the network is necessary in order for it to perform useful computational tasks such as optimizatino and associative memory. Many networks with unqual weights (w_ij != w_ji) also converge successfully.
+(p39) "Mathematical analysis has shown that when this equality is true (bi-directional weights equal), the network is able to converge - that is, it eventually attains a stable state. Convergence of the network is necessary in order for it to perform useful computational tasks such as optimizatino and associative memory. Many networks with unqual weights (w_ij != w_ji) also converge successfully.
 #+END_QUOTE
 
-42:
 #+BEGIN_QUOTE
-"The randomized updates used in the Hopfield network provide an important difference between it and other paradigms. Most other neural network paradigms have a layer of processing units updated at the same time (or nearly the same time). In contrast, the asynchronous updating of the Hopfield Net is a closer match to biological reality - biological neurons update their own states due to events that impinge upon the neuron. These impinging events are not synchronized from neuron to neuron."
+(p42) "The randomized updates used in the Hopfield network provide an important difference between it and other paradigms. Most other neural network paradigms have a layer of processing units updated at the same time (or nearly the same time). In contrast, the asynchronous updating of the Hopfield Net is a closer match to biological reality - biological neurons update their own states due to events that impinge upon the neuron. These impinging events are not synchronized from neuron to neuron."
 #+END_QUOTE
 
-56:
 #+BEGIN_QUOTE
-"The nonsynchronous updating of processing units in the Hopfield network is a unique property, and is especially relevant to the study of biological systems becuase of their asynchronous updating of nerve cell attributes. In addition, asynchronous updating can be helpful in designing fast hardware implementations.
+(p56) "The nonsynchronous updating of processing units in the Hopfield network is a unique property, and is especially relevant to the study of biological systems becuase of their asynchronous updating of nerve cell attributes. In addition, asynchronous updating can be helpful in designing fast hardware implementations.
 
 The most general advantage of the Hopfield network is its inherently parallel architecture. As a result, potential hardware implementations may be very fast. Tradeoffs must be assessed, however, between the size and speed of the network and the size of the applications problems."
 #+END_QUOTE
@@ -71,6 +64,15 @@ The most general advantage of the Hopfield network is its inherently parallel ar
       * change number of hidden nodes 
       * add noise to weights
       * momentum 
+  + Competitive Learning
+    - Two layers, input layer and competitive layer, layers are fully interconnected layers
+    - (p96) "In the competitive layer, the units compete for the opportunity to respond to the input pattern."
+    - Input units have activations of 0 or 1, weights are small in [0,1] and sum to 1
+    - For winner take all scheme, unit in output layer with highest weighted sum has activation 1, all others 0
+    - Only weights going to winner are updated, and are updated by \Delta w_{ji} = g(\frac{x_i}{m} - w_{ji}) for g learning parameter (usually in range [0.01, 0.3]) and m number of active input units
+    - Weight incremented when corresponding unit has activation 1, decremented when 0
+    - Update procedure retains weights summing to 1
+    - Unsupervised for dividing input patterns into self-learned classes
 
 * Papers
 ** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
