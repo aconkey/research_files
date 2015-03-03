@@ -88,7 +88,8 @@ The most general advantage of the Hopfield network is its inherently parallel ar
    [[http://www3.cs.stonybrook.edu/~leman/pubs/14-sdm-miobi.pdf][Paper PDF]]
    [[http://epubs.siam.org/doi/abs/10.1137/1.9781611973440.37][Citation]]
 
-** TODO Computer systems are dynamical systems
+** DONE Computer systems are dynamical systems
+   CLOSED: [2015-03-02 Mon 21:09]
    [[http://www-plan.cs.colorado.edu/klipto/CHAOEH193033124_2.pdf][Paper PDF]]
    [[http://scitation.aip.org/content/aip/journal/chaos/19/3/10.1063/1.3187791][Citation]]
 
@@ -100,7 +101,7 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 
    "In the broader picture, our results suggest that one cannot understand the behavior of a computer by understanding how the hardware and software subsystems function and then composing their dynamics. Instead, one must treat the system as a network of complex, nonlinear, interacting parts - CPU, cache, RAM, disk, graphics cards, operating system, user programs, etc. - and analyze the resulting dynamics as a whole."
 
-   "the dynamics of a computer system depends both on the ISA and on the implementation. Indeed... the same software can produce chaotic behavior on a cmoputer that is built around one microprocessor and periodic behavior on a computer that is built around another processor, even if both follow the x86 specification."
+   "the dynamics of a computer system depends both on the ISA and on the implementation. Indeed... the same software can produce chaotic behavior on a computer that is built around one microprocessor and periodic behavior on a computer that is built around another processor, even if both follow the x86 specification."
 
    "The time scale for the discrete-time dynamics is imposed by the internal clock on the chip. Designers intentionally choose the clock cycle to be larger than the time scales of the continuous dynamics in order to ensure that the discrete-time dynamics dominates the behavior of the system."
 
@@ -109,6 +110,8 @@ The most general advantage of the Hopfield network is its inherently parallel ar
    "... the topological dimension of the two systems' state spaces is similar, even though the dynamics of their trajetories is different. This point is particularly interesting in view of the enormity of the potential state space and the differences that we have noted about these two processors. The similarity in our estimates of the state-space dimension is likely because the dynamics are dominated by the memory subsystem of the computer."
 
    "The nature of the dynamics changed completely when the same program was run on a computer that uses a different Intel processor, even though the design of that processor adhered to the same specification, affirming the role of implementation in the dynamics. Changing the program also changed the dynamics, verifying the presence of implementation dynamics code in the model of Eq. 2. When the two programs were interleaved in time, the dynamics alternated accordingly, leading us to a view of a computer as a dynamical system under the influence of a periodic series of externally forced bifurcations. All of these experiments have been repeated on multiple machines under different external operating conditions while maintaining internal conditions constant insofar as possible."
+
+It seems that computers have at a low level dynamical properties that are also seen in the brain, but for the high level operation of the system, the digital computer seeks to mask those dynamics by imposing a more predictable overt behavior. The nonlinearities are masked instead of being exploited. The brain on the other hand uses those low-level nonlinearities to give the system self-organizing control and even nonlinear overt behavior. The difference is in how the systems deal with the low-level dynamics, not the presence or absence of the dynamics in itself.
 
 * Tutorials
 ** [[http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial][UFLDL Tutorial]]
