@@ -75,7 +75,13 @@ The most general advantage of the Hopfield network is its inherently parallel ar
     - Unsupervised for dividing input patterns into self-learned classes
 
 * Papers
-** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
+** Machine Learning
+*** DONE Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions - Socher 2011
+    CLOSED: [2015-03-03 Tue 14:25]
+    [[http://nlp.stanford.edu/~jpennin/papers/D11-1014.pdf][Paper PDF]]
+    [[http://dl.acm.org/citation.cfm?id=2145450][Citation]]
+** Networks
+*** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
    [[http://www.snl.salk.edu/~navlakha/pubs/pkdd2015.pdf][Paper PDF]]
    [[http://link.springer.com/article/10.1007/s10618-014-0399-1][Citation]]
@@ -84,11 +90,12 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 
    "For both social and biological networks, node loss occurs alongside an underlying growth process."
 
-** TODO Make It or Break It: Manipulating Robustness in Large Networks - Chan 2014
+*** TODO Make It or Break It: Manipulating Robustness in Large Networks - Chan 2014
    [[http://www3.cs.stonybrook.edu/~leman/pubs/14-sdm-miobi.pdf][Paper PDF]]
    [[http://epubs.siam.org/doi/abs/10.1137/1.9781611973440.37][Citation]]
 
-** DONE Computer systems are dynamical systems
+** Dynamical Systems
+*** DONE Computer systems are dynamical systems
    CLOSED: [2015-03-02 Mon 21:09]
    [[http://www-plan.cs.colorado.edu/klipto/CHAOEH193033124_2.pdf][Paper PDF]]
    [[http://scitation.aip.org/content/aip/journal/chaos/19/3/10.1063/1.3187791][Citation]]
@@ -97,7 +104,7 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 
    "It is important to note that not all of this dynamical complexity and richness manifest unless one studies a real computer, not just a simulator that mimics its behavior - the common approach in previous work on this topic in both the computer architecture and dynamical systems literature."
 
-   Must look at an implemented computer and not just the abstraction of it. 
+Must look at an implemented computer and not just the abstraction of it. 
 
    "In the broader picture, our results suggest that one cannot understand the behavior of a computer by understanding how the hardware and software subsystems function and then composing their dynamics. Instead, one must treat the system as a network of complex, nonlinear, interacting parts - CPU, cache, RAM, disk, graphics cards, operating system, user programs, etc. - and analyze the resulting dynamics as a whole."
 
