@@ -88,6 +88,18 @@ The most general advantage of the Hopfield network is its inherently parallel ar
    [[http://www3.cs.stonybrook.edu/~leman/pubs/14-sdm-miobi.pdf][Paper PDF]]
    [[http://epubs.siam.org/doi/abs/10.1137/1.9781611973440.37][Citation]]
 
+** TODO Computer systems are dynamical systems
+   [[http://www-plan.cs.colorado.edu/klipto/CHAOEH193033124_2.pdf][Paper PDF]]
+   [[http://scitation.aip.org/content/aip/journal/chaos/19/3/10.1063/1.3187791][Citation]]
+
+   "While the program dynaics are generally simple and easy to understand, the performance dynamics of a program running on a modern computer can be complex and even chaotic."
+
+   "It is important to note that not all of this dynamical complexity and richness manifest unless one studies a real computer, not just a simulator that mimics its behavior - the common approach in previous work on this topic in both the computer architecture and dynamical systems literature."
+
+   Must look at an implemented computer and not just the abstraction of it. 
+
+   "In the broader picture, our results suggest that one cannot understand the behavior of a computer by understanding how the hardware and software subsystems function and then composing their dynamics. Instead, one must treat the system as a network of complex, nonlinear, interacting parts - CPU, cache, RAM, disk, graphics cards, operating system, user programs, etc. - and analyze the resulting dynamics as a whole."
+
 * Tutorials
 ** [[http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial][UFLDL Tutorial]]
 *** DONE Exercise: Sparse Autoencoder
