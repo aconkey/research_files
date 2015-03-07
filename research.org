@@ -86,6 +86,16 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 *** DONE Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank - Socher 2013
     CLOSED: [2015-03-04 Wed 23:22]
     [[http://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf][Paper PDF]]
+*** TODO Efficient Estimation of Word Representations in Vector Space - Mikolov 2013
+    [[http://arxiv.org/pdf/1301.3781.pdf][Paper PDF]]
+
+    "Somewhat surprisingly, it was found that similarity of word representations goes beyond simple syntactic regularities. Using a word offset technique where simple algebraic operations are performed on the word vectors, it was shown for example that vector(”King”) - vector(”Man”) + vector(”Woman”) results in a vector that is closest to the vector representation of the word Queen."
+
+Maybe this kind of algebraic reasoning could be used to uncover causal relationships? That is, suppose you built up vector representations of your corpus such that you had a well-defined cause and effect relationship established. For example, you had a relationship "pressure increases as volume decreases". If you had compositional representations, then you could represent this in your vector space as V = vector("pressure increases") + vector("volume decreases"). If this is a cause-effect sentence based on the corpus you trained on, then you should be able to V - vector("cause") = vector("pressure increases") which would be the left over effect in the sentence. That seems to presuppose the knowledge of the causal relationship, but if your corpus contained a lot of instances of cause effect relationships, especially when established by an explicit causal connective, then maybe that would come out. 
+
+You could maybe build up a notion of "cause" by performing some computation on words with a high similarity to "because", so then vector("cause") would be something meaningful to perform algebraic operations on no matter the causal connective actually used (because, since, as, for, thus, therefore, etc.). Presumably this kind of similarity would come out of the corpus training, and perhaps you could augment it by training on a large corpus of argumentative text (to learn the causal relations in itself) and then incorporate into your domain corpus.
+
+
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
