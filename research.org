@@ -24,6 +24,14 @@
 The most general advantage of the Hopfield network is its inherently parallel architecture. As a result, potential hardware implementations may be very fast. Tradeoffs must be assessed, however, between the size and speed of the network and the size of the applications problems."
 #+END_QUOTE
 
+#+BEGIN_QUOTE
+(p126) "Terminal boutons are at the ends of the axon branches. These structures, which usually form small bulges at the end of each fiber, release chemical transmitters, which cross the synaptic gap to reach a receiving neuron. When these transmitters are released, the membrane fo the target neuron is affected, and its inclination to fire its own impulse is changed - either increased or decreased, allowing an incoming signal to be either excitatory or inhibitory."
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+(p127) "Nerve cells come in many different sizes and shapes, and are usually tailored for the jobs that they do: Some nerve cells have tremendous arborizations of dendrites or axons, some have long branches, and others have short branches. Neurons usually create signals via impulses, but some transmit signals to other cells without an impulse. Some nerve axons are insulated with a material called myelin, and others are not. Trunk diameters of dendrites can differ from cell to cell, and the detailed structure of the axon hillock can be different, leading to different dynamics for impulse initiation."
+#+END_QUOTE
+
 *** Architecture Types
   + Perceptron
     - 0 or 1 thresholded output
