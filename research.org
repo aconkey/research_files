@@ -86,7 +86,8 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 *** DONE Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank - Socher 2013
     CLOSED: [2015-03-04 Wed 23:22]
     [[http://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf][Paper PDF]]
-*** TODO Efficient Estimation of Word Representations in Vector Space - Mikolov 2013
+*** DONE Efficient Estimation of Word Representations in Vector Space - Mikolov 2013
+    CLOSED: [2015-03-07 Sat 17:43]
     [[http://arxiv.org/pdf/1301.3781.pdf][Paper PDF]]
 
     "Somewhat surprisingly, it was found that similarity of word representations goes beyond simple syntactic regularities. Using a word offset technique where simple algebraic operations are performed on the word vectors, it was shown for example that vector(”King”) - vector(”Man”) + vector(”Woman”) results in a vector that is closest to the vector representation of the word Queen."
@@ -95,6 +96,19 @@ Maybe this kind of algebraic reasoning could be used to uncover causal relations
 
 You could maybe build up a notion of "cause" by performing some computation on words with a high similarity to "because", so then vector("cause") would be something meaningful to perform algebraic operations on no matter the causal connective actually used (because, since, as, for, thus, therefore, etc.). Presumably this kind of similarity would come out of the corpus training, and perhaps you could augment it by training on a large corpus of argumentative text (to learn the causal relations in itself) and then incorporate into your domain corpus.
 
+*** DONE Distributed Representations of Words and Phrases and their Compositionality - Mikolov 2013
+    CLOSED: [2015-03-07 Sat 18:45]
+    [[http://arxiv.org/pdf/1310.4546.pdf][Paper PDF]]
+
+    "Word representations are limited by their inability to represent idiomatic phrases that are not compositions of the individual words. For example, “Boston Globe” is a newspaper, and so it is not a natural combination of the meanings of “Boston” and “Globe”. Therefore, using vectors to represent the whole phrases makes the Skip-gram model considerably more expressive. Other techniques that aim to represent meaning of sentences by composing the word vectors, such as the recursive autoencoders (socher), would also benefit from using phrase vectors instead of the word vectors."
+
+Phrase composition seems to need very large data sets (they used 33 billion words) to be successful. BUT, they were using just effectively random text and learning very general concepts. Perhaps if you are operating only in a specific domain and are using training data that involves the same content but phrased in many unique ways, it might be able to pick up on phrases in that particular domain well. And generally that seems the only means by which this approach will be successful in the causality domain without resorting to an enormous training set - there will be a lot of content redundancy in the training data, but it will all be about the desired topic and so it can pick up on the causal relations within that domain. To extrapolate to other domains, will have to train on other domains, and to make this feasible in domain-free setting (i.e the domain is unknown), will likely have to train vector representations on an enormous corpus rich with causal relationships.
+
+*** DONE Linguistic Regularities in Continuous Space Word Representations - Mikolov 2013
+    CLOSED: [2015-03-07 Sat 19:08]
+    [[http://research.microsoft.com/pubs/189726/rvecs.pdf][Paper PDF]]
+
+    "In this model, to answer the analogy question a:b c:d where d is unknown, we find the embedding vectors x_a, x_b, x_c (all normalized to unit norm), and compute y = x_b − x_a + x_c. y is the continuous space representation of the word we expect to be the best answer. Of course, no word might exist at that exact position, so  we then search for the word whose embedding vector has the greatest cosine similarity to y and output it: w^* = argmax_w \frac{x_w y}{\Vert x_w \Vert \Vert y \Vert}"
 
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
