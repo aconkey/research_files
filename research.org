@@ -386,3 +386,28 @@ It seems that computers have at a low level dynamical properties that are also s
 **** TODO [[https://www.youtube.com/watch?v=z61VFeALk3o&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=3][A Toy Example of Training an RNN]]
 **** TODO [[https://www.youtube.com/watch?v=Pp4oKq4kCYs&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=4][Why it is Difficult to Train an RNN]] 
 **** TODO [[https://www.youtube.com/watch?v=lsV5rFbs-K0&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=5][Long Term Short Term Memory]]
+* Research with Peter  
+** List of causal words
+
+because
+caus(es, ing, ally, ation)
+due to
+since
+as
+for
+thus
+therefor
+result(s, ing)
+when
+is (are)
+by
+depend(s, ing, ent)
+if/then
+
+** Mikolov word vectors:
+
+Maybe this kind of algebraic reasoning could be used to uncover causal relationships? That is, suppose you built up vector representations of your corpus such that you had a well-defined cause and effect relationship established. For example, you had a relationship "pressure increases as volume decreases". If you had compositional representations, then you could represent this in your vector space as V = vector("pressure increases") + vector("volume decreases"). If this is a cause-effect sentence based on the corpus you trained on, then you should be able to V - vector("cause") = vector("pressure increases") which would be the left over effect in the sentence. That seems to presuppose the knowledge of the causal relationship, but if your corpus contained a lot of instances of cause effect relationships, especially when established by an explicit causal connective, then maybe that would come out. 
+
+You could maybe build up a notion of "cause" by performing some computation on words with a high similarity to "because", so then vector("cause") would be something meaningful to perform algebraic operations on no matter the causal connective actually used (because, since, as, for, thus, therefore, etc.). Presumably this kind of similarity would come out of the corpus training, and perhaps you could augment it by training on a large corpus of argumentative text (to learn the causal relations in itself) and then incorporate into your domain corpus.
+
+Phrase composition seems to need very large data sets (they used 33 billion words) to be successful. BUT, they were using just effectively random text and learning very general concepts. Perhaps if you are operating only in a specific domain and are using training data that involves the same content but phrased in many unique ways, it might be able to pick up on phrases in that particular domain well. And generally that seems the only means by which this approach will be successful in the causality domain without resorting to an enormous training set - there will be a lot of content redundancy in the training data, but it will all be about the desired topic and so it can pick up on the causal relations within that domain. To extrapolate to other domains, will have to train on other domains, and to make this feasible in domain-free setting (i.e the domain is unknown), will likely have to train vector representations on an enormous corpus rich with causal relationships.
