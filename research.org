@@ -32,6 +32,14 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 (p127) "Nerve cells come in many different sizes and shapes, and are usually tailored for the jobs that they do: Some nerve cells have tremendous arborizations of dendrites or axons, some have long branches, and others have short branches. Neurons usually create signals via impulses, but some transmit signals to other cells without an impulse. Some nerve axons are insulated with a material called myelin, and others are not. Trunk diameters of dendrites can differ from cell to cell, and the detailed structure of the axon hillock can be different, leading to different dynamics for impulse initiation."
 #+END_QUOTE
 
+#+BEGIN_QUOTE
+(p142) "The waveforms of successive impulses appear the same; thus, the shape of the impulse is not important. The important aspects of the impulse train are the times of occurrences of impulses, the times of occurrence of volleys of impulses, and the temporal delays between successive impulses. Which nerve cells fire also appears to be important in the nervous system as well as groups of nerve cells that tend to fire together or in particular types of patterns."
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+(p142) "Traditionally, a nerve cell that transmits impulses down its axons and receives impulses at its dendrites has been considered a standard neuron, however many exceptions to this "standard" exist. Not all nerve cells generate imipulses, for example those in the retina. Those that do not generate imipulses rely on their ability to spread changes in membrane potentials along the cell membrane. These changes can cause the release of neurotransmitter at synapses, and thus affect target cells without the use of impulses."
+#+END_QUOTE
+
 *** Architecture Types
   + Perceptron
     - 0 or 1 thresholded output
