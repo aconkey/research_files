@@ -40,6 +40,34 @@ The most general advantage of the Hopfield network is its inherently parallel ar
 (p142) "Traditionally, a nerve cell that transmits impulses down its axons and receives impulses at its dendrites has been considered a standard neuron, however many exceptions to this "standard" exist. Not all nerve cells generate imipulses, for example those in the retina. Those that do not generate imipulses rely on their ability to spread changes in membrane potentials along the cell membrane. These changes can cause the release of neurotransmitter at synapses, and thus affect target cells without the use of impulses."
 #+END_QUOTE
 
+#+BEGIN_QUOTE
+(p154) "Summation in biological units is different from that in artificial neural networks. Artificial networks sum arriving scalar values at discrete time steps. Biological neural networks have mechanisms for temporal integration as well as summation of incoming signals, and biological mechanisms for inhibition are different from those for excitation, producing effects with differeng magnitudes and dynamics.
+
+When a neurotransmitter is received at a postsynaptic cell, the cell's membrane is affected. The way in whihc this effect occurs is key to how the target neuron sums its inputs. The process is time modulated, spacially modulated, and influenced by the conductances and locations of ions." 
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+(p156) "Yet another factor enters into the summation of incoming impulses - the size and shape of the dendritic tree and its proecesses. The dendrite branching topology, the branch diameters, and the trunk size of the dendritic tree all influence the summation of incoming signals. The position of the synapse on the dendritic tree or on the cell body also influences how arriving pulses are summed. ...
+
+A pivotal issue is identifying what makes neurons fire. Usually a number of incoming impulses are required to make a target cell fire. If the arriving impulses are spaced closely in time, then the target cell sums the EPSPs rapidly, with little time decay between arrivals. Thus, impulses that are closely spaced in time are more likely to cause the target neuron to fire. These incoming impulses could be from the same or different neurons. A group of neurons that all feed the same target neuron could trigger a response if they fire in near synchrony." 
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+(p157) "A question remains about the possible significance of temporal patterns in the timing of pulses from neurons and assemblies of neurons. Favored patterns - those that repeat unexpectedly - have been found, and other temporal patterns have appeared in a variety of preparations. Such patterns might have biological significance in contributing to the dynamic processing and encoding done in biological neural networks. Although a temporal pattern is not expected to elicit an individual pulse from an individual target neuron, such a pattern contributes to temporal patterns that are output from assemblies of neurons. At the least, this patterning could be a side effect of the way the nervous system processes. At most, impulse patterns and correlations could be a code for information processing and representation. It is possible that identifying and tracking assembly patterns could turn out to be a highly significant way of approaching and understanding neural dynamics.
+
+The structure of biological neural networks is at once both divergent and convergent. The output of a neuron is fractionated, as its axon branches to synapse onto many other neurons. A single neuron in turn receives input from many sources. The temporal spacing of impulses is superimposed on this anatomical structure of divergent and convergent interconnections. Biological nervous systems, thus, can be considered to perform spatiotemporal processing, a much more complex process than the parallel or serial processing of conventional computers."
+#+END_QUOTE
+
+Could these recurring patterns she is referring to be related to dynamic attractors in the state space of the brain? It would be interesting to know if the patterns she is describing are found to adhere to definable attractor patterns."
+
+#+BEGIN_QUOTE
+(p159) "Biological systems, on the other hand, have a built-in temporal structure because impulses can occur at any time, and thus may form temporal patterns. Thu summation in the two systems [biological and artificial] must be done differently as a result of their different signaling characteristics."
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+(p160) "The layers in biological systems are not fully interconnected with layers above and below in the simplistic way that is found in many artificial systems, as biological connections may be sparse or amy involve more than one synapse. Three-dimensional packing considerations discourage fully interconnected topologies for biological systems, and also pose a constraint in designing neurocomputing hardware."
+#+END_QUOTE
+
 *** Architecture Types
   + Perceptron
     - 0 or 1 thresholded output
