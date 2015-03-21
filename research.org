@@ -154,6 +154,13 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
     "In this model, to answer the analogy question a:b c:d where d is unknown, we find the embedding vectors x_a, x_b, x_c (all normalized to unit norm), and compute y = x_b − x_a + x_c. y is the continuous space representation of the word we expect to be the best answer. Of course, no word might exist at that exact position, so  we then search for the word whose embedding vector has the greatest cosine similarity to y and output it: w^* = argmax_w \frac{x_w y}{\Vert x_w \Vert \Vert y \Vert}"
 
+*** DONE Causal Relation Extraction - Blanco 2008
+    CLOSED: [2015-03-21 Sat 08:58]
+    [[http://www.ece.uc.edu/~mazlack/dbm.w2010/Causal%20Text%20Networks/Blanco.2008.pdf][Paper PDF]]
+*** DONE Automatic extraction of cause-effect relations in Natural Language Text - Sorgente 2013
+    CLOSED: [2015-03-21 Sat 10:19]
+    [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.2300&rep=rep1&type=pdf#page=42][Paper PDF]]
+
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
