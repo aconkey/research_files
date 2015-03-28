@@ -161,8 +161,11 @@ Phrase composition seems to need very large data sets (they used 33 billion word
     CLOSED: [2015-03-21 Sat 10:19]
     [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.2300&rep=rep1&type=pdf#page=42][Paper PDF]]
 
-*** TODO Learning grammatical structure with Echo State Networks - Tong 2007
+*** DONE Learning grammatical structure with Echo State Networks - Tong 2007
+    CLOSED: [2015-03-28 Sat 12:30]
     [[http://cseweb.ucsd.edu/~echristiansen/papers/grammar_esn.pdf][Paper PDF]]
+
+    Paper indicates that their work is the among the first applications of ESNs to natural language processing. They use a very, very limited vocabulary though and the grammar is too simple to approach full natural language use. They say in the final paragraph of the discussion that their results are "insufficient to indicate whether ESNs are capable of scaling to a large natural language corpus." ESNs in full natural language in 2007 was therefore uncharted territory. The promise of ESNs is indicated though since the trained paramaters scale linearly with network size, as opposed to other recurrent models that scale quadratically.
 
 *** TODO Language modelling using augmented echo state networks - Rachez 2014
     [[http://www.ijicic.org/ijicic-13-12004.pdf][Paper PDF]]
