@@ -161,6 +161,25 @@ Phrase composition seems to need very large data sets (they used 33 billion word
     CLOSED: [2015-03-21 Sat 10:19]
     [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.2300&rep=rep1&type=pdf#page=42][Paper PDF]]
 
+*** TODO Learning grammatical structure with Echo State Networks - Tong 2007
+    [[http://cseweb.ucsd.edu/~echristiansen/papers/grammar_esn.pdf][Paper PDF]]
+
+*** TODO Language modelling using augmented echo state networks - Rachez 2014
+    [[http://www.ijicic.org/ijicic-13-12004.pdf][Paper PDF]]
+
+*** TODO Probabilistic Language Modeling using Echo State Networks - Rachez 2012
+    [[http://www.researchgate.net/publication/236117115_Probabilistic_Language_Modeling_using_Echo_State_Networks][Paper Download]]
+    [[file:../papers/rachez2012.pdf][Local PDF]]
+
+*** TODO Recurrent temporal networks and language acquisition - Dominey 2013
+    [[http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3733003/pdf/fpsyg-04-00500.pdf][Paper PDF]]
+
+*** TODO On-line processing of grammatical structure using reservoir computing - Hinaut 2012
+    [[../papers/hinaut2012.pdf][Local PDF]]
+
+*** TODO Real-time parallel processing of grammatical structure in the fronto-striatal system (reservoir computing) - Hinaut 2013
+    [[../papers/hinaut2013.pdf][Local PDF]]
+
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
@@ -438,6 +457,11 @@ It seems that computers have at a low level dynamical properties that are also s
 **** TODO [[https://www.youtube.com/watch?v=Pp4oKq4kCYs&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=4][Why it is Difficult to Train an RNN]] 
 **** TODO [[https://www.youtube.com/watch?v=lsV5rFbs-K0&list=PLnnr1O8OWc6YM16tj9pdhBZOS9tDktNrx&index=5][Long Term Short Term Memory]]
 * Research with Peter  
+** Notes
+
+   Precision: fraction of asserted classifications that are actually correct
+   Recall: fraction of total instances that were classified correctly
+   F1 score: a weighted average of precision and recall that measures accuracy, in range [0,1]
 ** List of causal words
 
 because
