@@ -167,7 +167,8 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
     Paper indicates that their work is the among the first applications of ESNs to natural language processing. They use a very, very limited vocabulary though and the grammar is too simple to approach full natural language use. They say in the final paragraph of the discussion that their results are "insufficient to indicate whether ESNs are capable of scaling to a large natural language corpus." ESNs in full natural language in 2007 was therefore uncharted territory. The promise of ESNs is indicated though since the trained paramaters scale linearly with network size, as opposed to other recurrent models that scale quadratically.
 
-*** TODO Language modelling using augmented echo state networks - Rachez 2014
+*** DONE Language modelling using augmented echo state networks - Rachez 2014
+    CLOSED: [2015-03-28 Sat 16:47]
     [[http://www.ijicic.org/ijicic-13-12004.pdf][Paper PDF]]
 
     Used an artificial corpus of 5500 words to train, sentences automatically generated from a grammar 3-9 words in length with average length 6.7. They treat the corpus as one huge word sequence though in training.
