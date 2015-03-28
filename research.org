@@ -170,6 +170,10 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 *** TODO Language modelling using augmented echo state networks - Rachez 2014
     [[http://www.ijicic.org/ijicic-13-12004.pdf][Paper PDF]]
 
+    Used an artificial corpus of 5500 words to train, sentences automatically generated from a grammar 3-9 words in length with average length 6.7. They treat the corpus as one huge word sequence though in training.
+
+    They also did not try their work on a full scale natural language corpus and only presented results based on the artificial corpus. The recurring task seems to be predicting the next word based on the previously seen sequence of words. I would instead like to know how an ESN can be used in teasing out particular semantic regularities in sentences, and causality specifically. The representational space of the reservior might be exploited to this end, and it could be augmented if needed, e.g. a "deep reservoir" with layered reservoirs to build up representations iteratively or with tuned readout layers to track down particular features of a sentence.
+
 *** TODO Probabilistic Language Modeling using Echo State Networks - Rachez 2012
     [[http://www.researchgate.net/publication/236117115_Probabilistic_Language_Modeling_using_Echo_State_Networks][Paper Download]]
     [[file:../papers/rachez2012.pdf][Local PDF]]
