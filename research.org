@@ -199,7 +199,8 @@ Phrase composition seems to need very large data sets (they used 33 billion word
      CLOSED: [2015-03-29 Sun 20:07]
     [[../papers/hinaut2012.pdf][Local PDF]]
 
-**** TODO Real-time parallel processing of grammatical structure in the fronto-striatal system (reservoir computing) - Hinaut 2013
+**** DONE Real-time parallel processing of grammatical structure in the fronto-striatal system (reservoir computing) - Hinaut 2013
+     CLOSED: [2015-03-31 Tue 11:36]
     [[../papers/hinaut2013.pdf][Local PDF]]
 
     "Our models are based on the principle that the information necessary to perform this thematic role assignment is encoded in the sentence by the configuration of grammatical function words (e.g. determiners, auxiliary verbs, prepositions) within the sentence. ... In our modeling, the notion is that the sequence of closed class words forms a pattern of activity within the recurrent network, and that this pattern can be associated with the corresponding thematic role specification."
