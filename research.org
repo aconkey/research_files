@@ -202,6 +202,19 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 **** TODO Real-time parallel processing of grammatical structure in the fronto-striatal system (reservoir computing) - Hinaut 2013
     [[../papers/hinaut2013.pdf][Local PDF]]
 
+    "Our models are based on the principle that the information necessary to perform this thematic role assignment is encoded in the sentence by the configuration of grammatical function words (e.g. determiners, auxiliary verbs, prepositions) within the sentence. ... In our modeling, the notion is that the sequence of closed class words forms a pattern of activity within the recurrent network, and that this pattern can be associated with the corresponding thematic role specification."
+
+    My hypothesis would then be in the same vein but for causality. That is, a sentence encodes causal relations in virtue of sentence structure and word patterns, and thus the recurrent reservoir will have dynamics that reflect this structure and can be used by readout connections to discern whether causal structure is present and possibly even discern the particulars of the causal relation (what is the cause and what is the effect).
+
+    Nice description of reservoir computing:    
+    "Reservoir computing is a machine learning technique in which a recurrent network with fixed connections is used to encode the spatiotemporal structure of an input sequence, and connections to a readout layer are trained using efficient algorithms to produce a desired output in response to input sequences. The central concept of reservoir computing is to project low dimensional inputs onto a recurrently connected "reservoir" of neurons which creates a high-dimensional projection of the low-dimensional input space, thus increasing the input seperability. The recurrent connections provide sensitivity to events over time, thus yielding the desired sensitivity to sequential and temporal organization. This projection and the dynamics of the reservoir serve as a form of kernel in the machine learning sense, thus allow one to perform complex nonlinear computational tasks with simiple linear readouts."
+
+    IMPORTANT: they reset the reservoir state before the presentation of each input sentence
+
+    "The reservoir encodes the ongoing trajectory of grammatical structure as words successively arrive. The trained read-out neurons extract this structure in real-time, in a predictive manner. This readout activity reflects the current probabilities for each of the multiple possible parses in parallel."
+
+    They show that the network is indeed picking up on grammatical structure, since they tested it on a scrambled corpus that destroyed the grmamatical structure and got terrible results. The success is dependent on training on a corpus that exhibits proper grammatical structure (which doesn't bode well for the student-written essays as serving as the training corpus).
+
 **** DONE A practical guide to applying echo state networks - Lukosevicius 2012
      CLOSED: [2015-03-29 Sun 11:12]
     [[http://organic.elis.ugent.be/sites/organic.elis.ugent.be/files/PracticalESN.pdf][Paper PDF]]
