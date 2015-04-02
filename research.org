@@ -475,7 +475,8 @@ It seems that computers have at a low level dynamical properties that are also s
 *** TODO Multi cores support in Theano
 **** TODO BLAS operation
 **** TODO Parallel element wise ops with OpenMP
-** TODO [[http://mdp-toolkit.sourceforge.net/tutorial/tutorial.html][MDP Tutorial]]
+** DONE [[http://mdp-toolkit.sourceforge.net/tutorial/tutorial.html][MDP Tutorial]]
+   CLOSED: [2015-04-01 Wed 20:32]
 ** TODO [[http://organic.elis.ugent.be/node/267][Oger Tutorial]]
 * Videos
 *** Theano
