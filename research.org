@@ -477,7 +477,8 @@ It seems that computers have at a low level dynamical properties that are also s
 **** TODO Parallel element wise ops with OpenMP
 ** DONE [[http://mdp-toolkit.sourceforge.net/tutorial/tutorial.html][MDP Tutorial]]
    CLOSED: [2015-04-01 Wed 20:32]
-** TODO [[http://organic.elis.ugent.be/node/267][Oger Tutorial]]
+** DONE [[http://organic.elis.ugent.be/node/267][Oger Tutorial]]
+   CLOSED: [2015-04-01 Wed 20:53]
 * Videos
 *** Theano
 **** DONE [[https://www.youtube.com/watch?v=S75EdAcXHKk][Introduction to Deep Learning with Python]]
