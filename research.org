@@ -479,6 +479,8 @@ It seems that computers have at a low level dynamical properties that are also s
    CLOSED: [2015-04-01 Wed 20:32]
 ** DONE [[http://organic.elis.ugent.be/node/267][Oger Tutorial]]
    CLOSED: [2015-04-01 Wed 20:53]
+** DONE [[http://gitimmersion.com/][Git Immersion]]
+   CLOSED: [2015-04-17 Fri 11:25]
 * Videos
 *** Theano
 **** DONE [[https://www.youtube.com/watch?v=S75EdAcXHKk][Introduction to Deep Learning with Python]]
