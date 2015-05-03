@@ -232,9 +232,11 @@ Phrase composition seems to need very large data sets (they used 33 billion word
      [[../papers/barancok2014.pdf][Local PDF]]
 **** TODO Multi-reservoir Echo State Network with Sparse Bayesian Learning - Han 2010
      [[../papers/han2010.pdf][Local PDF]]
-**** TODO Echo State Networks for Multi-dimensional Data Clustering - Koprinkova 2012
+**** DONE Echo State Networks for Multi-dimensional Data Clustering - Koprinkova 2012
+     CLOSED: [2015-05-02 Sat 19:37]
      [[../papers/koprinkova2012.pdf][Local PDF]]
-**** TODO Echo State Networks in Dynamic Data Clustering - Koprinkova 2013
+**** DONE Echo State Networks in Dynamic Data Clustering - Koprinkova 2013
+     CLOSED: [2015-05-02 Sat 19:37]
      [[../papers/koprinkova2013.pdf][Local PDF]]
 **** TODO Stable training method for ESNs running in closed-loop based on particle swarm optimization algorithm - Song 2009
      [[../papers/song2009.pdf][Local PDF]]
