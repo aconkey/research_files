@@ -169,6 +169,8 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
      The reservoir is also serving as a memory, which is why it is primarily useful for tasks of a temporal nature where there are dependencies existing over time. To my mind, this seems like a good reason to use it for natural language processing because language is inherently something that occurs over time and a word in one part of the sentence will have a dependency on other parts of the sentence. Though interestingly it is not necessarily the case the the dependency will occur linearly in one direction, i.e. the dependency may not necessarily be from a present word to a previous word but could be from a present word to a future word. Dependencies exist also over multiple sentences. This may be a reason consider a whole essay as an input sequence to find dependencies over sentence divisions, and for a single sentence, multiple passes might be required or inputting the sentence as a repeated signal in order to first let the entire signal be "known" to the reservoir, and then have it discern features of the sentence.
 
+     There is some indication that RNNs (particularly ESNs) do not handle high-dimensional data very well (e.g. Hinton's ESN video and also suggested by the Kaprinkova papers in their ESNs now being useful for multidimensional data, BUT they are using only 7 or so dimensions). This is unfortunate since I need 300 dimensional input! Although, this may just be a result of not being able to use a large enough reservoir. It seems feasible to me that larger dimensional data would only require much larger reservoirs in order to be of use in expanding the input in the reperesentational space of the reservoir. Other than using lower dimensional word vectors, another approach might be to consider imposing a more structured architecture on the reservoir. That is, instead of just one monolithic reservoir with sparse random connections, maybe have many smaller reservoirs with sparse random connections, and then introduce connections between those smaller reservoirs. Or better yet, induce "small world" structure so that you have computational hubs. This would be more in the spirit of brain architectures, though this might make it much more difficult to get a linear readout of the reservoir.
+
 **** DONE Learning grammatical structure with Echo State Networks - Tong 2007
     CLOSED: [2015-03-28 Sat 12:30]
     [[http://cseweb.ucsd.edu/~echristiansen/papers/grammar_esn.pdf][Paper PDF]]
@@ -220,8 +222,25 @@ Phrase composition seems to need very large data sets (they used 33 billion word
      CLOSED: [2015-03-29 Sun 11:12]
     [[http://organic.elis.ugent.be/sites/organic.elis.ugent.be/files/PracticalESN.pdf][Paper PDF]]
 
-**** TODO A tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the "echo state network" approach - Jaeger 2002
+**** DONE A tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the "echo state network" approach - Jaeger 2002
+     CLOSED: [2015-05-03 Sun 20:24]
      [[http://www.pdx.edu/sites/www.pdx.edu.sysc/files/Jaeger_TrainingRNNsTutorial.2005.pdf][Paper PDF]]
+
+     "A randomly constructed RNN, such as our dynamic reservoir, might develop oscillatory or even chaotic activity even in the absence of external excitation. We do not want this to occur: The ESN approach needs a DR which is damped, in the sense that if the network is started from an arbitrary state, the subsequent network states converge to the zero state. This can be achieved by a proper global scaling of W: the smaller the weights of W, the stronger the damping."
+
+     This damping seems essential for my task because the idea is that semantically similar encoded sentences should produce similar dynamics in the reservoir. This is unlikely to happen though if the network dynamics settle near chaos because then even the same input applied at different times might incite dynamics that diverge drastically.
+
+     "We do not collect information from times n=1,...,100 because the network's dynamics is partially determined by the network's arbitrary starting state. By time n=100 we can safely assume that the effects of the arbitrary string state have died out and that the network states are a pure reflection of the teacher forced signal."
+
+     Important to note that the reservoir will need to time to respond appropriately to signals. It seems that I would also have to introduce "cleansing" perionds between input signals so that the network has appropriate time to adjust to the current input and process it appropriately. Maybe consider sending a signal in as pulses (i.e. repeating same signal one after other as an input train) so that the reservoir begins to resonate for that signal and will settle into an oscillatory state that is representative of that input that can then be read out. 
+
+     (Sine-wave teacher forcing example:) "Most networks trained according to the presription given here can be started from almost any arbitrary nonzero starting state and will lock into the desired sinewave. In mathematical terms, the trained network is a dynamical system with a single attractor, and this attractor is the desired oscillation. However, the strong stability observed in this example is a pleasant side-effect of the simplicity of the sinewave generating task. When the tasks become more difficult, the stability of the trained dynamics is indeed a critical issue for ESN training."
+
+     They note that the echo state property of a network is dependent on the training data, i.e. it the weights and connections assigned irrespective of the training will exhibit echo states for some training date and not for others.
+
+     "The diligent choice of the spectral radius alpha of the DR weight matrix is of crucial importance for the eventual success of ESN training. This is because alpha is intimately connected to the intrinsic timescale of the dynamics of the DR state. Small alpha means that one has a fast DR, large alpha (i.e. close to unity) means that one has a slow DR. The intrinsic timescale of the task should match the DR timescale."
+
+     Step-by-step help on pg. 30 for initial construction of ESN
 
 **** TODO Echo-State Network in Java - Lohmann 2010
      [[http://www.uni-tuebingen.de/index.php?eID=tx_nawsecuredl&u=0&g=0&t=1429926389&hash=8b6ef6bdb4a6eb32d3871b596e14efd92f7e15f7&file=fileadmin/Uni_Tuebingen/Fakultaeten/InfoKogni/WSI/KogModel/ext00209/user_upload/Publications/2010/ESNJava1.0Report.pdf][Paper PDF]]
