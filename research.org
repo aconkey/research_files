@@ -220,7 +220,20 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
 **** DONE A practical guide to applying echo state networks - Lukosevicius 2012
      CLOSED: [2015-03-29 Sun 11:12]
-    [[http://organic.elis.ugent.be/sites/organic.elis.ugent.be/files/PracticalESN.pdf][Paper PDF]]
+     [[http://organic.elis.ugent.be/sites/organic.elis.ugent.be/files/PracticalESN.pdf][Paper PDF]]
+
+     - convergence in backpropagation in RNNs is not guaranteed (bifurcations) and if it converges it can be very slow.
+
+     - "the reservoir acts (i) as a nonlinear expansion and (ii) as a memory of input at the same time... Both aspects (i) and (ii) combined, the reservoir, being an input-driven dynamical system, should provide a rich and relevant enough signal space in x(n), such that the desired target y_t(n) could be obtained by a linear combination from it."
+
+     - "The general wisdom is that the bigger the reservoir, the better the obtainable performance, provided appropriate regularization measures are taken against overfitting."
+
+     - "Alpha can be regarded as the time interval in the continuous world between two consectuive time steps in the discrete realization... When the task requires modeling the time series producting dynamical system on multiple time scales, it might be useful to set different leaking rates to different units (vector) with a possible downside of having more parameters to optimize."
+
+       - This may be relevant for me. Processing dependencies in a sentence or over the course of a larger corpus can happen at different rates. E.g. the dependencies between words or phrases can occur in close proximity (word pair dependencies) or can occur over the longer range of an entire sentence or even over multiple sentences. It may not be necessary to have every unit with a differnt leaking rate, but maybe specify classes of alpha values (say, 10 alpha values over a certain range), and distribute the units more or less uniformly over those classes.
+
+**** TODO Reservoir Computing Trends - Lukosevicius-Jaeger 2012
+     [[../papers/lukojaeger2012.pdf][Local PDF]]
 
 **** DONE A tutorial on training recurrent neural networks, covering BPPT, RTRL, EKF and the "echo state network" approach - Jaeger 2002
      CLOSED: [2015-05-03 Sun 20:24]
@@ -242,6 +255,15 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
      Step-by-step help on pg. 30 for initial construction of ESN
 
+**** TODO Harnessing non-linearity: predicting chaotic systems and saving energy in wireless communications - Jaeger 2004
+     [[../papers/jaeger2004.pdf][Local PDF]]
+
+**** TODO Optimization and applications of echo state networks with leaky-integrator neurons - Jaeger 2007
+     [[../papers/jaeger2007][LocalPDF]]
+
+**** TODO Phoneme Recognition with Large Hierarchical Reservoirs - Triefenbach 2011
+     [[../papers/triefenbach2011.pdf][Local PDF]]
+
 **** TODO Echo-State Network in Java - Lohmann 2010
      [[http://www.uni-tuebingen.de/index.php?eID=tx_nawsecuredl&u=0&g=0&t=1429926389&hash=8b6ef6bdb4a6eb32d3871b596e14efd92f7e15f7&file=fileadmin/Uni_Tuebingen/Fakultaeten/InfoKogni/WSI/KogModel/ext00209/user_upload/Publications/2010/ESNJava1.0Report.pdf][Paper PDF]]
 
@@ -259,6 +281,12 @@ Phrase composition seems to need very large data sets (they used 33 billion word
      [[../papers/koprinkova2013.pdf][Local PDF]]
 **** TODO Stable training method for ESNs running in closed-loop based on particle swarm optimization algorithm - Song 2009
      [[../papers/song2009.pdf][Local PDF]]
+**** TODO Bifurcations in the Learning of Recurrent Neural Networks - Doya 1992
+     [[../papers/doya1992.pdf][Local PDf]]
+
+**** TODO Real-time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbation - Maass 2002
+     [[../papers/maass2002.pdf][Local PDF]]
+
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
