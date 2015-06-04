@@ -575,6 +575,8 @@ It seems that computers have at a low level dynamical properties that are also s
    Precision: fraction of asserted classifications that are actually correct
    Recall: fraction of total instances that were classified correctly
    F1 score: a weighted average of precision and recall that measures accuracy, in range [0,1]
+
+It is possible that a sentence represented as a sequence of word vectors being fed into the reservoir one at a time will not be long enough to produce the desired dynamics in the reservoir, especially when a sentence is very short. Perhaps there can be a repeater function that will take a sentence sequence and repeat it N times so that you're sending pulses of the sentence into the reservoir, the idea being that after the reservoir has received the sentence pulse a number of times it will settle in the dynamics for that particular sentence and sort of resonate, and hopefully that resonating will allow for a targeted classification of the desired aspects of the sentence, whatever it was trained to recognize. A one-off pulse may not be enough, might need to consider pulse trains. 
 ** List of causal words
 
 because
