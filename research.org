@@ -287,6 +287,9 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 **** TODO Real-time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbation - Maass 2002
      [[../papers/maass2002.pdf][Local PDF]]
 
+**** TODO Echo state networks as an alternative to traditional artificial neural networks in rainfall-runoff modelling
+     [[http://www.hydrol-earth-syst-sci.net/17/253/2013/hess-17-253-2013.pdf][Paper PDF]]
+
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
@@ -577,6 +580,11 @@ It seems that computers have at a low level dynamical properties that are also s
    F1 score: a weighted average of precision and recall that measures accuracy, in range [0,1]
 
 It is possible that a sentence represented as a sequence of word vectors being fed into the reservoir one at a time will not be long enough to produce the desired dynamics in the reservoir, especially when a sentence is very short. Perhaps there can be a repeater function that will take a sentence sequence and repeat it N times so that you're sending pulses of the sentence into the reservoir, the idea being that after the reservoir has received the sentence pulse a number of times it will settle in the dynamics for that particular sentence and sort of resonate, and hopefully that resonating will allow for a targeted classification of the desired aspects of the sentence, whatever it was trained to recognize. A one-off pulse may not be enough, might need to consider pulse trains. 
+
+For all intents and purposes, I am treating a time step as a training instance and the dimensionality of the word vectors will be the number of features for an instance. Even though it is really more proper to treat a single sentence as a training example, Ridge Regression is operating on a matrix of concatenated values over time and the acquisition of the correct readout weight matrix relies on computing those weights in relation to the full time-series, not based on each sentence presented sequentially. This still allows for pulsing of sentences if needed, just introduce the pulse sequence of a sentence concatenated on to a chain of pulse-sequences.
+
+May want to try RidgeCV as it will go through a selection of the best regularization parameter with GridSearch
+
 ** List of causal words
 
 because
