@@ -585,6 +585,8 @@ For all intents and purposes, I am treating a time step as a training instance a
 
 May want to try RidgeCV as it will go through a selection of the best regularization parameter with GridSearch
 
+There are a lot of variations on how the network is constructed, depending on how interconnected the layers should be. The reservoir only can be connected to the output nodes, the inputs can also have connections going straight to the output, the output nodes can have direct feedback connections on themselves, there can be feedback connections going back into the reservoir. It seems like the out-reservoir feedback connections are a separate entity (and randomly assigned) while the in-out, reservoir-out, and out-out connections are all thrown into the output weight matrix that is trained. For simplicity I will just start out with reservoir-out and out-reservoir and then can complicate the connections later. Both Lukosevicius and Jaeger also include in-out. 
+
 ** List of causal words
 
 because
