@@ -290,6 +290,9 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 **** TODO Echo state networks as an alternative to traditional artificial neural networks in rainfall-runoff modelling
      [[http://www.hydrol-earth-syst-sci.net/17/253/2013/hess-17-253-2013.pdf][Paper PDF]]
 
+**** DONE Effects of spectral radius and settling time in the performance of echo state networks - Shishir 2009
+     CLOSED: [2015-06-21 Sun 10:56]
+     [[../papers/shishir2009.pdf][Local PDF]]
 ** Networks
 *** DONE MASSEXODUS: modeling evolving networks in harsh environments - Navlakha, Bar-Joseph 2015
    CLOSED: [2015-02-27 Fri 21:38]
@@ -586,6 +589,8 @@ For all intents and purposes, I am treating a time step as a training instance a
 May want to try RidgeCV as it will go through a selection of the best regularization parameter with GridSearch
 
 There are a lot of variations on how the network is constructed, depending on how interconnected the layers should be. The reservoir only can be connected to the output nodes, the inputs can also have connections going straight to the output, the output nodes can have direct feedback connections on themselves, there can be feedback connections going back into the reservoir. It seems like the out-reservoir feedback connections are a separate entity (and randomly assigned) while the in-out, reservoir-out, and out-out connections are all thrown into the output weight matrix that is trained. For simplicity I will just start out with reservoir-out and out-reservoir and then can complicate the connections later. Both Lukosevicius and Jaeger also include in-out. 
+
+There is a slight peculiarity when scaling for the reservoir weights to the desired spectral radius. In the scipy.sparse.linalg package, the function eigs can only reliably generate eigenvalues when they deviate sufficiently from zero, namely when the computed spectral radius (max(abs(eigs(w)))) is greater than or equal to 0.01. The eigs function works iteratively, so it seems that when all of the values are close to zero it cannot reliable compute them, and the result then is that when you scale the weights to a target spectral radius, it is unlikely to actually be scaled to that value since the computed spectral radius jumps around in value from one execution to another. -- I have resolved this in the initialization of the reservoir weights by simply having a loop that re-initializes the weights until it gets a set with spectral radius above 0.01. Having a SR below that threshold is reasonably rare so the loop will likely only execute a couple iterations at most.
 
 ** List of causal words
 
