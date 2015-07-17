@@ -199,11 +199,13 @@ Phrase composition seems to need very large data sets (they used 33 billion word
 
 **** DONE On-line processing of grammatical structure using reservoir computing - Hinaut 2012
      CLOSED: [2015-03-29 Sun 20:07]
-    [[../papers/hinaut2012.pdf][Local PDF]]
+     [[../papers/hinaut2012.pdf][Local PDF]]
+
+     - They provide some validation for their results by considering also a classification task in which the data (inputs and assigned classifications) are just randomized vectors, the idea being that if the network were not in fact picking up on the semantic structure of the sentences, then there would not be an appreciable difference between the sentence task and the randomized data task.
 
 **** DONE Real-time parallel processing of grammatical structure in the fronto-striatal system (reservoir computing) - Hinaut 2013
      CLOSED: [2015-03-31 Tue 11:36]
-    [[../papers/hinaut2013.pdf][Local PDF]]
+     [[../papers/hinaut2013.pdf][Local PDF]]
 
     "Our models are based on the principle that the information necessary to perform this thematic role assignment is encoded in the sentence by the configuration of grammatical function words (e.g. determiners, auxiliary verbs, prepositions) within the sentence. ... In our modeling, the notion is that the sequence of closed class words forms a pattern of activity within the recurrent network, and that this pattern can be associated with the corresponding thematic role specification."
 
@@ -217,6 +219,8 @@ Phrase composition seems to need very large data sets (they used 33 billion word
     "The reservoir encodes the ongoing trajectory of grammatical structure as words successively arrive. The trained read-out neurons extract this structure in real-time, in a predictive manner. This readout activity reflects the current probabilities for each of the multiple possible parses in parallel."
 
     They show that the network is indeed picking up on grammatical structure, since they tested it on a scrambled corpus that destroyed the grmamatical structure and got terrible results. The success is dependent on training on a corpus that exhibits proper grammatical structure (which doesn't bode well for the student-written essays as serving as the training corpus).
+
+    I am not sure how strong their results really are. They report a 42% sentence error rate (at least one of the output nodes incorrect) and potentially very close to 50% on leave-one-out cross validation. To me that seems like a high error rate.
 
 **** DONE A practical guide to applying echo state networks - Lukosevicius 2012
      CLOSED: [2015-03-29 Sun 11:12]
@@ -591,6 +595,8 @@ May want to try RidgeCV as it will go through a selection of the best regulariza
 There are a lot of variations on how the network is constructed, depending on how interconnected the layers should be. The reservoir only can be connected to the output nodes, the inputs can also have connections going straight to the output, the output nodes can have direct feedback connections on themselves, there can be feedback connections going back into the reservoir. It seems like the out-reservoir feedback connections are a separate entity (and randomly assigned) while the in-out, reservoir-out, and out-out connections are all thrown into the output weight matrix that is trained. For simplicity I will just start out with reservoir-out and out-reservoir and then can complicate the connections later. Both Lukosevicius and Jaeger also include in-out. 
 
 There is a slight peculiarity when scaling for the reservoir weights to the desired spectral radius. In the scipy.sparse.linalg package, the function eigs can only reliably generate eigenvalues when they deviate sufficiently from zero, namely when the computed spectral radius (max(abs(eigs(w)))) is greater than or equal to 0.01. The eigs function works iteratively, so it seems that when all of the values are close to zero it cannot reliable compute them, and the result then is that when you scale the weights to a target spectral radius, it is unlikely to actually be scaled to that value since the computed spectral radius jumps around in value from one execution to another. -- I have resolved this in the initialization of the reservoir weights by simply having a loop that re-initializes the weights until it gets a set with spectral radius above 0.01. Having a SR below that threshold is reasonably rare so the loop will likely only execute a couple iterations at most.
+
+It seems wise to reset the the reservoir somehow between each run on a sentence (unless classifications are being made for an entire corpus, in which case it might be able to pick up on structure across sentences), otherwise the network might erroneously "believe" there exist dependencies across sentences when in fact the sentences have nothing to do with one another. How that resetting should occur I am not sure: either set the reservoir activations to 0 or random values; I can try both and see if there is any appreciable difference. Can also consider a repeating signal for each sentence, in case the dynamics don't settle in time for the single sentence, but again that might introduce dependencies that shouldn't exist.
 
 ** List of causal words
 
